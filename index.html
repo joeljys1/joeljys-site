@@ -1,139 +1,660 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="join the waitlist for the face drawing breakdown — the face construction method that fixed my drawings.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="the face drawing breakdown - waitlist">
-  <meta property="og:description" content="i figured out why your face drawings look 'off'. the face drawing breakdown teaches you how to construct faces correctly from any angle.">
-  <meta property="og:image" content="https://joeljys.com/og-image.jpg">
-  <meta property="og:url" content="https://joeljys.com">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="the face drawing breakdown - waitlist">
-  <meta name="twitter:description" content="i figured out why your face drawings look 'off'. the face drawing breakdown shows you the construction method that fixes it.">
-  <meta name="twitter:image" content="https://joeljys.com/twitter-card.jpg">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <title>the face drawing breakdown - waitlist</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>The Face Drawing System · joel.jys</title>
+<meta name="description" content="A 45-minute video guide. The system for drawing faces that actually look right. Proportions, tilt, and likeness, built into a repeatable method." />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --page: #faf8f4;
+    --ink: #1a1208;
+    --ink-2: #3a2e22;
+    --ink-mute: #7a6a55;
+    --rule: #e7dfce;
+    --accent: #dc2e1a;
+    --accent-deep: #a82213;
 
+    --tint-cream: #ffffff;
+    --tint-paper: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: 'Inter Tight', 'Helvetica Neue', sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--accent); color: var(--page); }
+  a { color: inherit; }
 
-  <link rel="stylesheet" href="assets/css/custom.css">
+  .display { font-family: 'Inter Tight', sans-serif; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; }
+  .italic { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; letter-spacing: -0.005em; }
+  .mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); font-weight: 500; }
+
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+  /* ─── nav ─── */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--page) 90%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-in {
+    max-width: 1100px; margin: 0 auto; padding: 16px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Inter Tight', 'Helvetica Neue', sans-serif;
+    font-size: 16px; font-weight: 600;
+    color: var(--ink); letter-spacing: -0.015em;
+    text-decoration: none;
+  }
+  .logo .dot { color: var(--accent); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: var(--page);
+    border: none; cursor: pointer; text-decoration: none;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 14.5px; font-weight: 500;
+    padding: 10px 18px; border-radius: 999px;
+    transition: background .15s ease, transform .12s ease;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+  }
+  .btn:hover { background: var(--accent-deep); transform: translateY(-1px); }
+  .btn .price { opacity: 0.55; font-size: 13px; }
+  .btn-lg { font-size: 16px; padding: 14px 24px; }
+
+  /* ─── hero ─── */
+  .hero { padding: 80px 0 96px; text-align: center; background: #ffffff; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  h1.hero-h {
+    font-family: 'Inter Tight', sans-serif; font-weight: 700;
+    font-size: clamp(40px, 5.4vw, 64px); line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0 auto 22px; max-width: 820px;
+  }
+  h1.hero-h em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: var(--accent-deep); letter-spacing: -0.01em; }
+  .hero-sub {
+    font-size: 19px; color: var(--ink-2);
+    max-width: 540px; margin: 0 auto 34px;
+    line-height: 1.55;
+  }
+  .hero-cta-row {
+    display: inline-flex; align-items: center; gap: 18px; margin-bottom: 0;
+  }
+  .hero-cta-row .meta { font-size: 14px; color: var(--ink-mute); }
+  .hero-cta-row .meta strong { color: var(--ink); font-weight: 600; }
+
+  /* ─── section scaffolding ─── */
+  section.s {
+    padding: 96px 0 96px;
+  }
+  .video-frame {
+    position: relative;
+    max-width: 880px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: var(--ink);
+    box-shadow: 0 24px 60px rgba(26,18,8,0.18), 0 8px 20px rgba(26,18,8,0.08);
+  }
+  .video-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    border: 0;
+  }
+  .s-white { background: #ffffff; }
+  .s-white .test-block,
+  .s-white .module-block { background: var(--page); }
+  .sec-head {
+    text-align: center;
+    max-width: 720px; margin: 0 auto 44px;
+  }
+  .sec-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent-deep); font-weight: 500;
+    margin-bottom: 14px;
+  }
+  h2.sec-h {
+    font-family: 'Inter Tight', sans-serif; font-weight: 700;
+    font-size: clamp(34px, 4.2vw, 48px); line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin: 0 auto 14px;
+    max-width: 640px;
+  }
+  h2.sec-h em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: var(--accent-deep); }
+  .sec-sub {
+    font-size: 17px; color: var(--ink-2);
+    max-width: 520px; margin: 0 auto;
+    line-height: 1.55;
+  }
+
+  /* ─── blocks (the Notion thing) ─── */
+  .blocks {
+    display: grid;
+    gap: 14px;
+  }
+  .block {
+    border-radius: 16px;
+    padding: 28px 28px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .block-cream { background: var(--tint-cream); }
+  .block-yellow { background: var(--tint-paper); }
+  .block-sage { background: var(--tint-cream); }
+  .block-clay { background: var(--tint-paper); }
+  .block-rose { background: var(--tint-paper); }
+  .block-paper { background: var(--tint-paper); }
+  .block-ink { background: var(--ink); color: var(--page); }
+  .block-ink .block-eyebrow, .block-ink .block-meta { color: rgba(244,236,217,0.65); }
+  .block-ink h3 { color: var(--page); }
+  .block-ink p { color: rgba(244,236,217,0.85); }
+
+  .block-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .block h3 {
+    font-family: 'Inter Tight', sans-serif; font-weight: 600;
+    font-size: 22px; line-height: 1.2; letter-spacing: -0.015em;
+    margin: 0 0 8px; color: var(--ink);
+  }
+  .block h3 em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: var(--accent-deep); }
+  .block p { margin: 0; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+
+  /* hero before/after as a single block */
+  .hero-block {
+    margin-top: 64px;
+    background: var(--page);
+    border-radius: 18px;
+    padding: 28px;
+  }
+  .hero-block .ba {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .hero-block .pane {
+    background: var(--page);
+    border-radius: 12px;
+    aspect-ratio: 4/4.6;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-block .pane.before { background: #ffffff; }
+  .hero-block .pane.after  { background: var(--ink); }
+  .hero-block .pane svg { width: 65%; max-height: 75%; }
+  .hero-block .pane img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .pane-tag {
+    position: absolute; top: 14px; left: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    background: var(--page); color: var(--ink);
+    padding: 5px 9px; border-radius: 6px; font-weight: 500;
+  }
+  .pane.after .pane-tag { background: var(--accent); color: var(--page); }
+  .pane-meta {
+    position: absolute; bottom: 14px; left: 14px; right: 14px;
+    display: flex; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .pane.after .pane-meta { color: rgba(244,236,217,0.55); }
+  .hero-block .caption {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 14px; color: var(--ink-mute);
+  }
+
+  /* social pill row (subtle, after hero) */
+  .social-row {
+    display: flex; justify-content: center; align-items: center; gap: 10px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+  }
+  .social-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 14px; border-radius: 999px;
+    background: var(--page); border: 1px solid var(--rule);
+    text-decoration: none; color: var(--ink);
+    font-size: 14px;
+    transition: border-color .15s ease, transform .12s ease;
+  }
+  .social-pill:hover { border-color: var(--ink); transform: translateY(-1px); }
+  .social-pill svg { width: 14px; height: 14px; }
+  .social-pill .count { font-weight: 600; }
+  .social-pill .plat { color: var(--ink-mute); }
+
+  /* ─── STORY timeline ─── */
+  .timeline-blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  .timeline-block {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 30px 30px;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .timeline-block-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 22px;
+  }
+  .timeline-num {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 800; font-size: 38px; line-height: 0.9;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+  }
+  .timeline-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-mute); font-weight: 500;
+  }
+  .timeline-h {
+    font-family: 'Inter Tight', sans-serif; font-weight: 600;
+    font-size: 22px; line-height: 1.22; letter-spacing: -0.015em;
+    margin: 0 0 12px; color: var(--ink);
+  }
+  .timeline-h em {
+    font-family: 'Instrument Serif', serif; font-style: italic;
+    font-weight: 400; color: var(--accent-deep);
+  }
+  .timeline-block p {
+    margin: 0; font-size: 15px; line-height: 1.55; color: var(--ink-2);
+  }
+  .timeline-block::after {
+    content: "→";
+    position: absolute; top: 50%; right: -22px;
+    transform: translateY(-50%);
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px; color: var(--accent);
+    z-index: 1;
+  }
+  .timeline-block:last-child::after { display: none; }
+
+  /* ─── MODULES blocks layout ─── */
+  .modules-blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .module-block {
+    border-radius: 16px;
+    padding: 32px 32px 28px;
+    display: flex; flex-direction: column;
+    min-height: 460px;
+  }
+  .module-block-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 22px;
+  }
+  .module-block-num {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 800; font-size: 36px; line-height: 0.9;
+    letter-spacing: -0.04em; color: var(--ink);
+  }
+  .module-block-illu {
+    height: 280px;
+    margin: 0 -20px 24px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .module-block-illu svg { height: 100%; width: auto; max-width: 90%; }
+  .module-block-illu img { height: 100%; width: 100%; object-fit: contain; display: block; }
+  .module-block h3 {
+    font-family: 'Inter Tight', sans-serif; font-weight: 600;
+    font-size: 22px; line-height: 1.2; letter-spacing: -0.015em;
+    margin: 0 0 8px; color: var(--ink);
+  }
+  .module-block h3 em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; color: var(--accent-deep); }
+  .module-block p {
+    margin: 0; font-size: 15px; line-height: 1.5; color: var(--ink-2);
+  }
+
+  /* included strip */
+  .incl-block {
+    margin-top: 14px;
+    background: var(--page);
+    border: 1.5px dashed var(--rule);
+    border-radius: 16px;
+    padding: 22px 28px;
+    display: flex; gap: 32px; flex-wrap: wrap;
+    justify-content: center;
+  }
+  .incl-block .item { display: flex; align-items: center; gap: 10px; font-size: 14.5px; color: var(--ink-2); }
+  .incl-block .item .plus { color: var(--accent-deep); font-weight: 700; font-size: 18px; }
+
+  /* ─── TESTIMONIALS · instagram screenshots ─── */
+  .testimonial-shots {
+    column-count: 2;
+    column-gap: 16px;
+  }
+  .testimonial-shots .shot {
+    break-inside: avoid;
+    margin: 0 0 16px;
+    display: block;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(26,18,8,0.07), 0 2px 6px rgba(26,18,8,0.04);
+  }
+  .testimonial-shots .shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  @media (max-width: 720px) {
+    .testimonial-shots { column-count: 1; }
+  }
+
+  /* ─── final cta · dark block ─── */
+  .final-block {
+    background: var(--ink);
+    border-radius: 20px;
+    padding: 80px 40px;
+    text-align: center;
+  }
+  .final-block .sec-head { margin-bottom: 36px; }
+  .final-block .sec-eyebrow { color: rgba(244,236,217,0.55); }
+  .final-block .sec-h { color: var(--page); }
+  .final-block .sec-sub { color: rgba(244,236,217,0.7); }
+  .final-actions { text-align: center; }
+  .btn-hero {
+    font-size: 18px;
+    padding: 20px 36px;
+    box-shadow: 0 14px 36px rgba(220,46,26,0.4), 0 4px 14px rgba(220,46,26,0.22);
+    transition: background .15s ease, transform .15s ease, box-shadow .2s ease;
+  }
+  .btn-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 44px rgba(220,46,26,0.5), 0 6px 18px rgba(220,46,26,0.3);
+  }
+  .btn-hero .price { font-size: 16px; }
+  .final-refund {
+    margin: 26px 0 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(244,236,217,0.55); font-weight: 500;
+  }
+  .final-refund::before { content: "✓ "; color: var(--accent); }
+  .final-refund a { color: inherit; text-transform: none; text-decoration: underline; }
+  .final-refund a:hover { color: var(--page); }
+
+  /* footer */
+  footer {
+    padding: 48px 0 64px; margin-top: 96px;
+    border-top: 1px solid var(--rule);
+  }
+  .foot {
+    max-width: 1100px; margin: 0 auto; padding: 0 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  @media (max-width: 860px) {
+    .timeline-blocks, .modules-blocks, .test-blocks, .hero-block .ba {
+      grid-template-columns: 1fr;
+    }
+    .timeline-block::after { display: none; }
+    .final-block { padding: 56px 24px; border-radius: 16px; }
+    section.s { padding: 64px 0 64px; }
+    .hero { padding: 56px 0 32px; }
+    .hero-block { padding: 18px; margin-top: 40px; }
+    .module-block { min-height: 380px; }
+    .module-block-illu { height: 220px; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="pill-nav">
-    <div class="pill-nav-inner">
-      <a href="https://joeljys.com" class="brand">joel.jys</a>
-      <div class="nav-links">
-        <a href="#waitlist" class="nav-link nav-link-accent">Waitlist</a>
-      </div>
-    </div>
-  </nav>
+<svg style="position:absolute;width:0;height:0" aria-hidden="true">
+  <defs>
+    <filter id="wob" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="6"/>
+      <feDisplacementMap in="SourceGraphic" scale="2.2"/>
+    </filter>
+  </defs>
+</svg>
 
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="hero-fade">
-      <div class="hero-text">
-        <h1 class="hero-title">
-          <span>the face drawing</span>
-          <span class="hero-title-sub"><strong>breakdown</strong></span>
-        </h1>
-        <p class="hero-sub">
-          here's a sneak peek:
-        </p>
-      </div>
-      <div class="hero-video-wrap">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/fJEwE0bMt4Y?si=ItxbrLTbiFa2AALM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="border-radius: 8px; width: 100%; aspect-ratio: 16/9; height: auto;"></iframe>
-      </div>
-      <div class="hero-text">
-        <p class="hero-sub">
-          launching soon. waitlist members get an <strong>exclusive early bird discount</strong>.
-        </p>
-        <a href="#waitlist" class="btn">
-          save my spot <span class="btn-arrow">→</span>
-        </a>
-        <p class="hero-micro">free to join, no payment required</p>
-      </div>
-    </div>
-  </section>
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-in">
+    <a href="#" class="logo">joel<span class="dot">.</span>jys</a>
+    <a href="https://stan.store/joeljys/p/the-face-drawing-system" class="btn">get the guide <span class="price">$30</span></a>
+  </div>
+</nav>
 
-  <!-- ============ WHAT'S INSIDE ============ -->
-  <section class="learn">
-    <div class="learn-inner">
-      <h2>what you'll learn</h2>
-      <p style="color: var(--mid); margin-bottom: 1.5rem;">this is a <strong style="color: var(--fg);">construction course</strong> — you'll learn how to build the structure of a face correctly from any angle. not rendering, not shading — the foundation that makes everything else possible.</p>
-      <ul class="learn-list">
-        <li><strong>perspective & tilt</strong>: how to capture 3D on a flat page using guidelines — the step most people skip</li>
-        <li><strong>the head shape</strong>: proportions, jaw, and the overlay study method that builds real understanding</li>
-        <li><strong>the mask</strong>: placing big shapes for eye sockets, nose, and mouth before touching any details</li>
-        <li><strong>eyes</strong>: guideline placement, perspective warping, and seeing the eye as a 3D ball</li>
-        <li><strong>nose & lips</strong>: simplified sphere construction that works from any angle</li>
-      </ul>
+<!-- ─── HERO ─── -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span><span class="mono">A 45-MINUTE VIDEO GUIDE</span></div>
+    <h1 class="hero-h">The system for drawing faces<br/>that <em>actually</em> look right.</h1>
+    <p class="hero-sub">What you'd figure out on your own in five years, in 45 minutes.</p>
+    <div class="hero-cta-row">
+      <a href="https://stan.store/joeljys/p/the-face-drawing-system" class="btn btn-lg">get the guide <span class="price">$30</span></a>
     </div>
-  </section>
 
-  <!-- ============ WAITLIST ============ -->
-  <section id="waitlist" class="waitlist">
-    <div class="waitlist-inner">
-      <div class="waitlist-content">
-        <h2>join the waitlist</h2>
-        <p class="waitlist-desc">the breakdown drops soon. join the waitlist to lock in the early bird price before it goes up.</p>
-        <p class="waitlist-urgency">early bird pricing won't be available after launch.</p>
-      </div>
-      <div class="waitlist-form">
-        <div class="kit-form-container">
-          <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
-          <form action="https://app.kit.com/forms/9242110/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9242110" data-uid="a7ae5dab92" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;redirect&quot;,&quot;redirect_url&quot;:&quot;https://joeljys.com/thank-you&quot;}},&quot;version&quot;:&quot;5&quot;}">
-            <div data-style="clean">
-              <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
-              <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
-                <div class="formkit-field">
-                  <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;">
-                </div>
-                <button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 400;">
-                  <div class="formkit-spinner"><div></div><div></div><div></div></div>
-                  <span>Save my spot</span>
-                </button>
-              </div>
-            </div>
-          </form>
+    <div class="hero-block">
+      <div class="ba">
+        <div class="pane before">
+          <span class="pane-tag">Before</span>
+          <img src="assets/transformation illustrations/hero-before.png" alt="Face drawing before the system" />
+          <div class="pane-meta"><span>3 yrs drawing</span><span>unstructured</span></div>
         </div>
-        <p class="waitlist-fine">just your email. unsubscribe anytime.</p>
+        <div class="pane after">
+          <span class="pane-tag">After + system</span>
+          <img src="assets/transformation illustrations/hero-after.png" alt="Face drawing after the system" />
+          <div class="pane-meta"><span>years later</span><span style="color:var(--accent)">+ system</span></div>
+        </div>
       </div>
+      <div class="caption">Same artist · same reference · before &amp; after the system</div>
     </div>
-  </section>
 
-  <!-- ============ FAQ ============ -->
-  <section class="faq">
-    <div class="faq-inner">
-      <h2>questions?</h2>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary class="faq-q">is this for beginners?</summary>
-          <p class="faq-a">yes. if you can draw basic shapes, you can follow this. it's designed for anyone who struggles with faces — whether you're brand new or you've been drawing for years and still can't get them right.</p>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-q">do i need special equipment?</summary>
-          <p class="faq-a">nope. pencil and paper, or any digital drawing app. the method works regardless of your tools.</p>
-        </details>
-      </div>
+    <div class="social-row">
+      <a href="#" class="social-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
+        <span class="count">36.6K</span><span class="plat">/ instagram</span>
+      </a>
+      <a href="#" class="social-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="6" width="19" height="12" rx="3"/><path d="M10 9.5 L15 12 L10 14.5 Z" fill="currentColor" stroke="none"/></svg>
+        <span class="count">22.5K</span><span class="plat">/ youtube</span>
+      </a>
+      <a href="#" class="social-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3 V14.5 a3.5 3.5 0 1 1 -3.5 -3.5"/><path d="M14 3 c0.5 2.5 2.5 4 5 4"/></svg>
+        <span class="count">8.5K</span><span class="plat">/ tiktok</span>
+      </a>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-left">
-        <div class="footer-logo">joel.jys</div>
-        <p class="footer-tagline">teaching you how to draw faces that actually look like people.</p>
-      </div>
-      <nav class="footer-links">
-        <a href="#waitlist">Breakdown Waitlist</a>
-      </nav>
+<!-- ─── STORY ─── -->
+<section class="s">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">·THE STORY</div>
+      <h2 class="sec-h">How the system <em>came to be</em>.</h2>
+      <p class="sec-sub">Three years of getting it wrong. Then a year of figuring out why.</p>
     </div>
-    <p class="footer-copy">&copy; 2026 joel.jys</p>
-  </footer>
+
+    <div class="timeline-blocks">
+
+      <div class="timeline-block">
+        <div class="timeline-block-head">
+          <span class="timeline-num">01</span>
+          <span class="timeline-label">Problem</span>
+        </div>
+        <h3 class="timeline-h">Every face I drew looked <em>wrong</em>.</h3>
+        <p>I could tell something was off. Eyes too far apart, jaw not sitting right. But I couldn't name what.</p>
+      </div>
+
+      <div class="timeline-block">
+        <div class="timeline-block-head">
+          <span class="timeline-num">02</span>
+          <span class="timeline-label">Pivot</span>
+        </div>
+        <h3 class="timeline-h">So I changed my whole <em>approach</em>.</h3>
+        <p>Broke down hundreds of artists I admired. Looked for the same handful of decisions in every face that worked.</p>
+      </div>
+
+      <div class="timeline-block">
+        <div class="timeline-block-head">
+          <span class="timeline-num">03</span>
+          <span class="timeline-label">Payoff</span>
+        </div>
+        <h3 class="timeline-h">I built those decisions into a <em>system</em>.</h3>
+        <p>A checklist that runs before any rendering. The first face I drew with it looked right. So did the second.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── PREVIEW VIDEO ─── -->
+<section class="s s-white">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">·PREVIEW</div>
+      <h2 class="sec-h">Watch the <em>intro</em>.</h2>
+    </div>
+
+    <div class="video-frame">
+      <iframe
+        src="https://www.youtube.com/embed/fJEwE0bMt4Y?si=wOFcQxXp7G-VI9zp"
+        title="The Face Drawing System: Intro"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHAT'S INSIDE ─── -->
+<section class="s">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">·WHAT'S INSIDE</div>
+      <h2 class="sec-h">Four modules. <em>One system</em>.</h2>
+      <p class="sec-sub">Built around the four things that actually go wrong. Not another "draw a circle and a cross."</p>
+    </div>
+
+    <div class="modules-blocks">
+
+      <div class="module-block block-cream">
+        <div class="module-block-head">
+          <span class="module-block-num">01</span>
+        </div>
+        <div class="module-block-illu">
+          <img src="assets/module illustrations/module-tilt.png" alt="Tilt and perspective illustration" />
+        </div>
+        <h3>Tilt and perspective.</h3>
+        <p>Lock the head's angle before drawing a line.</p>
+      </div>
+
+      <div class="module-block block-yellow">
+        <div class="module-block-head">
+          <span class="module-block-num">02</span>
+        </div>
+        <div class="module-block-illu">
+          <img src="assets/module illustrations/module-shape.png" alt="Head shape illustration" />
+        </div>
+        <h3>The head shape.</h3>
+        <p>Match faces to shapes, not formulas.</p>
+      </div>
+
+      <div class="module-block block-sage">
+        <div class="module-block-head">
+          <span class="module-block-num">03</span>
+        </div>
+        <div class="module-block-illu">
+          <img src="assets/module illustrations/module-mask.png" alt="The mask illustration" />
+        </div>
+        <h3>The mask.</h3>
+        <p>Treat the face front as one shape.</p>
+      </div>
+
+      <div class="module-block block-clay">
+        <div class="module-block-head">
+          <span class="module-block-num">04</span>
+        </div>
+        <div class="module-block-illu">
+          <img src="assets/module illustrations/module-features.png" alt="The features illustration" />
+        </div>
+        <h3>The features.</h3>
+        <p>Built to fit the head you constructed.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="s s-white">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow">·FROM THE COMMENTS</div>
+      <h2 class="sec-h">Pulled straight from <em>instagram</em>.</h2>
+      <p class="sec-sub">Reactions to the free videos this guide is built from.</p>
+    </div>
+
+    <div class="testimonial-shots">
+      <div class="shot"><img src="assets/instagram comments/socks2328-circle-in-circle.png" alt="@socks2328: the circle-in-circle method is actually genius thank you" /></div>
+      <div class="shot"><img src="assets/instagram comments/group-stack.png" alt="Multiple commenters thanking Joel for the videos" /></div>
+      <div class="shot"><img src="assets/instagram comments/vania-andreia-500-videos.png" alt="@vania_andreia: How do you manage to explain something so clearly" /></div>
+      <div class="shot"><img src="assets/instagram comments/titiabarbie-took-years.png" alt="@titiabarbie: excuse you I took years for what" /></div>
+      <div class="shot"><img src="assets/instagram comments/c-doesthings-less-complicated.png" alt="@c_doesthings: THAT MAKES IT WAYYY LESS COMPLICATED" /></div>
+      <div class="shot"><img src="assets/instagram comments/unicorn-gumdrop-inspiring.png" alt="@unicorn.gumdrop: so clear and so powerful, your dedication is so inspiring" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL ─── -->
+<section class="s" id="buy">
+  <div class="wrap">
+    <div class="final-block">
+      <div class="sec-head">
+        <div class="sec-eyebrow">·READY?</div>
+        <h2 class="sec-h">Draw the face you <em>actually</em> meant to draw.</h2>
+        <p class="sec-sub">45 minutes. Four modules. One system you'll use for the rest of your life.</p>
+      </div>
+
+      <div class="final-actions">
+        <a href="https://stan.store/joeljys/p/the-face-drawing-system" class="btn btn-lg btn-hero">Get the guide <span class="price">$30</span></a>
+        <p class="final-refund">Lifetime refund. Email <a href="mailto:joeljys1@gmail.com">joeljys1@gmail.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <span>© joel.jys · 2026</span>
+  </div>
+</footer>
 
 </body>
 </html>
