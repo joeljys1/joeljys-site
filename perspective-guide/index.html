@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no"/>
+  <meta name="theme-color" content="#F9F8F6"/>
+  <title>Why Your Faces Always Look "Off" · joel.jys</title>
+  <meta name="description" content="The one thing that makes face drawings look flat — and the simple fix that makes them feel 3D."/>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #F9F8F6;
+      --fg: #2D2B28;
+      --fg-soft: #4A4742;
+      --mid: #7A756E;
+      --light: #9B9590;
+      --faint: #DDD8D2;
+      --accent: #F0941D;
+      --accent-hover: #D98318;
+      --white: #FFFFFF;
+      --font: 'DM Sans', Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Nav ── */
+    .nav {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 16px max(1.5rem, 7vw);
+      background: var(--bg);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1252px;
+    }
+    .brand {
+      color: var(--fg);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: -0.01em;
+    }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-link {
+      padding: 6px 0;
+      text-decoration: none;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--mid);
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: var(--fg); }
+    .nav-link-accent {
+      color: var(--white);
+      font-weight: 600;
+      background: var(--accent);
+      padding: 6px 14px;
+      border-radius: 6px;
+    }
+    .nav-link-accent:hover {
+      color: var(--white);
+      background: var(--accent-hover);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 1.5rem 2rem;
+    }
+    @media (min-width: 768px) { .hero { padding: 5rem 1.5rem 2.5rem; } }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      border: 1px solid var(--faint);
+      color: var(--mid);
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.3s forwards;
+    }
+
+    .hero h1 {
+      font-weight: 400;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      color: var(--fg);
+      max-width: 36rem;
+      padding: 1.5rem 0 0.8rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.4s forwards;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--mid);
+      letter-spacing: -0.01em;
+      max-width: 26rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.6s forwards;
+    }
+    /* ── Page layout ── */
+    .page-wrapper {
+      position: relative;
+    }
+
+    /* ── Content sections ── */
+    .content {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      margin-bottom: 0;
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--faint);
+    }
+    .section:last-child { border-bottom: none; padding-bottom: 2rem; }
+
+    .section h2 {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.25rem;
+      line-height: 1.15;
+      color: var(--fg);
+    }
+
+    .key-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .key-point {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--faint);
+    }
+    .key-point:last-child { border-bottom: none; padding-bottom: 0; }
+    .key-point:first-child { padding-top: 0; }
+
+    .key-points-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 1.5rem;
+    }
+    .key-point-header {
+      display: flex;
+      gap: 0.75rem;
+      align-items: baseline;
+      margin-bottom: 1rem;
+    }
+    .key-point-num {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .key-point-title {
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    .section p {
+      color: var(--fg-soft);
+      margin-bottom: 1rem;
+      font-size: 1.125rem;
+      line-height: 1.75;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .section p strong { color: var(--fg); }
+
+    /* ── Callout ── */
+    .callout {
+      background: var(--white);
+      border: 1px solid var(--faint);
+      border-left: 3px solid var(--accent);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .callout p {
+      margin-bottom: 0.75rem;
+      color: var(--fg-soft);
+    }
+    .callout p:last-child { margin-bottom: 0; }
+
+    /* ── Sphere comparison ── */
+    .sphere-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 1.75rem 0;
+    }
+    .sphere-col {
+      border: 1px solid var(--faint);
+      border-radius: 12px;
+      background: var(--white);
+      overflow: hidden;
+    }
+    .sphere-col > img {
+      width: 100%;
+      display: block;
+    }
+    .sphere-divider {
+      padding: 0.4rem 0.75rem;
+      border-top: 1px solid var(--faint);
+      border-bottom: 1px solid var(--faint);
+      background: var(--bg);
+    }
+    .sphere-divider span {
+      font-size: 0.68rem;
+      color: var(--light);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .sphere-col .indicator-img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ── Diagram grid ── */
+    .diagram-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 1.75rem 0;
+    }
+    .diagram-cell img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 2 / 3;
+      object-fit: contain;
+      border: 1px solid var(--faint);
+      border-radius: 10px;
+      background: var(--white);
+    }
+    .diagram-caption {
+      font-size: 0.72rem;
+      color: var(--light);
+      font-weight: 500;
+      text-align: center;
+      margin-top: 0.35rem;
+    }
+
+    /* ── Comparison ── */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.75rem 0;
+    }
+    .comparison-card {
+      background: var(--white);
+      border: 1px solid var(--faint);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .comparison-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #F8F6F3;
+      overflow: hidden;
+    }
+    .comparison-label {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .comparison-label.bad { color: #c0392b; }
+    .comparison-label.good { color: #27ae60; }
+
+    /* ── CTA section ── */
+    .cta-section {
+      text-align: center;
+      padding: 1rem 1.5rem 4rem;
+      max-width: 32rem;
+      margin: 0 auto;
+    }
+    .cta-section h2 {
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      color: var(--fg-soft);
+    }
+    .cta-section p {
+      color: var(--fg-soft);
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      margin-top: 1rem;
+    }
+    .cta-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+    .cta-micro {
+      font-size: 0.8rem;
+      color: var(--light);
+      margin-top: 0.8rem;
+    }
+
+    /* ── ConvertKit overrides ── */
+    .formkit-form .formkit-fields { display: flex; flex-direction: column; gap: 0.5rem; }
+    .formkit-form .formkit-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--faint) !important;
+      border-radius: 8px !important;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      background: var(--white);
+      color: var(--fg) !important;
+      outline: none;
+    }
+    .formkit-form .formkit-submit {
+      width: 100%;
+      padding: 13px;
+      background: var(--accent) !important;
+      color: #fff !important;
+      border: none !important;
+      border-radius: 8px !important;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 600 !important;
+      cursor: pointer;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+    .formkit-form .formkit-submit:hover { background: var(--accent-hover) !important; }
+
+    /* ── Step label ── */
+    .step-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── Comment wall ── */
+    .comment-wall {
+      max-width: 52rem;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    .comment-wall-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 1.5rem;
+    }
+    .comment-grid {
+      column-count: 3;
+      column-gap: 0.75rem;
+      position: relative;
+      max-height: 520px;
+      overflow: hidden;
+    }
+    .comment-grid img {
+      width: 100%;
+      margin-bottom: 0.75rem;
+      border-radius: 8px;
+      border: 1px solid var(--faint);
+      display: block;
+      break-inside: avoid;
+    }
+    .comment-wall-fade {
+      position: relative;
+    }
+    .comment-wall-fade::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 140px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      pointer-events: none;
+    }
+    @media (max-width: 600px) {
+      .comment-grid { column-count: 2; max-height: 380px; }
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--fg);
+      padding: 4rem 1.5rem 3rem;
+      margin-top: 1rem;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    .footer-inner {
+      max-width: 52rem;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3rem;
+    }
+    .footer-brand h3 {
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 16rem;
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 0.8rem;
+    }
+    .footer-socials a {
+      color: rgba(255,255,255,0.35);
+      transition: color 0.2s;
+      text-decoration: none;
+      font-size: 0.8rem;
+    }
+    .footer-socials a:hover { color: var(--white); }
+    .footer-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.6rem;
+    }
+    .footer-nav a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--white); }
+    .footer-copy {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.25);
+      margin-top: 1.4rem;
+      text-align: right;
+    }
+    @media (max-width: 540px) {
+      .footer-inner {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .footer-nav { align-items: flex-start; }
+      .footer-copy { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="brand">joel.jys</a>
+      <div class="nav-links">
+        <a href="#waitlist" class="nav-link nav-link-accent">Waitlist</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="hero">
+      <div class="hero-badge">free guide · the face drawing breakdown</div>
+      <h1>How to draw faces at <em>any angle</em></h1>
+      <p class="hero-subtitle">The one thing that fixed my face drawings.</p>
+    </section>
+
+    <div class="page-wrapper">
+
+<div class="content">
+
+      <!-- ── The problem ── -->
+      <div class="section" id="problem">
+        <h2>If your face looks off, it probably means your features are placed in the wrong perspective.</h2>
+
+        <div class="comparison">
+          <div class="comparison-card">
+            <div class="comparison-img"><img src="compare-front.png" alt="Front view" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <p class="comparison-label good">front view — easy</p>
+          </div>
+          <div class="comparison-card">
+            <div class="comparison-img"><img src="compare-angle.png" alt="Angled view" style="width: 100%; height: 100%; object-fit: cover;"></div>
+            <p class="comparison-label bad">any other angle — hard</p>
+          </div>
+        </div>
+
+        <p>It's not that hard to draw the face from the front — everything sits on straight lines and nothing is warping.</p>
+        <p>But when the head tilts and we're looking from a different perspective, those straight lines warp. That makes it really hard to place features correctly.</p>
+
+        <p style="font-weight: 600; color: var(--fg); margin-top: 2rem;">To see how perspective works, let's look at a ball from two different angles</p>
+
+        <div class="sphere-comparison">
+          <div class="sphere-col">
+            <img src="sphere-2.png" alt="Sphere — front view, straight line">
+            <div class="sphere-divider"><span>perspective</span></div>
+            <img class="indicator-img" src="sphere-1.png" alt="Eye level — front view">
+          </div>
+          <div class="sphere-col">
+            <img src="sphere-4.png" alt="Sphere — angled view, curved line">
+            <div class="sphere-divider"><span>perspective</span></div>
+            <img class="indicator-img" src="sphere-3.png" alt="Eye level — angled view">
+          </div>
+        </div>
+
+        <p>Notice how the straight line curves because of perspective?</p>
+        <p>The same applies to every line on the face.</p>
+
+        <div class="diagram-grid">
+          <div class="diagram-cell">
+            <img src="face-lines-1.png" alt="Face — front view with straight horizontal guidelines">
+            <p class="diagram-caption">front view</p>
+          </div>
+          <div class="diagram-cell">
+            <img src="face-lines-2.png" alt="Face — 3/4 view with curving guidelines">
+            <p class="diagram-caption">3/4 view</p>
+          </div>
+          <div class="diagram-cell">
+            <img src="just-lines-1.png" alt="Isolated straight guidelines — front view">
+            <p class="diagram-caption">guidelines only — front</p>
+          </div>
+          <div class="diagram-cell">
+            <img src="just-lines-2.png" alt="Isolated curved guidelines — angled view">
+            <p class="diagram-caption">guidelines only — angled</p>
+          </div>
+        </div>
+
+        <p>Every line on the face warps and follows a curved path.</p>
+        <div class="callout">
+          <p>Here's the mistake I used to make — I'd try to guess that curved path by eye. Some days my drawings looked fine. Other days they'd completely fall apart.</p>
+          <p>The fix is obvious once you see it. We just need to draw the features <em>over</em> these curved paths. Those paths are guidelines.</p>
+        </div>
+      </div>
+
+      <!-- ── Step 1: The brow line ── -->
+      <div class="section" id="brow-line">
+        <p class="step-label">01</p>
+        <h2>Place the brow line</h2>
+
+        <img src="1.png" alt="Sphere with brow line" style="width: 100%; border-radius: 12px; margin: 1.25rem 0 1.75rem; display: block;">
+
+        <p class="key-points-label">2 key points</p>
+
+        <div class="key-points">
+
+          <div class="key-point">
+            <div class="key-point-header">
+              <span class="key-point-num">1.</span>
+              <p class="key-point-title">Every other line follows from this one — get it wrong and everything shifts</p>
+            </div>
+            <img src="brow-tilts.png" alt="Same head at different tilts showing how brow line curve changes" style="max-width: 65%; display: block; margin: 0 auto 1rem; border-radius: 8px;">
+            <p>The curve of this line tells you exactly how the head is angled. Every guideline you place after is based off it — so a wrong brow line means every feature ends up misplaced, even if you draw them correctly.</p>
+          </div>
+
+          <div class="key-point">
+            <div class="key-point-header">
+              <span class="key-point-num">2.</span>
+              <p class="key-point-title">Don't estimate — visualise the rubber band</p>
+            </div>
+            <img src="1.2.png" alt="Reference photo with brow line curve visualised" style="width: 100%; border-radius: 8px; margin: 0 0 1rem; display: block;">
+            <p>Imagine a rubber band wrapped around the head at brow level on your reference. Visualise where it sits and how it curves — then replicate that on your sphere.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── Step 2: Remaining guidelines ── -->
+      <div class="section" id="remaining">
+        <p class="step-label">02</p>
+        <h2>Add the remaining horizontal guidelines</h2>
+
+        <img src="2b.png" alt="All horizontal guidelines" style="width: 100%; border-radius: 12px; margin: 1.25rem 0 1.75rem; display: block;">
+
+        <p class="key-points-label">2 key points</p>
+
+        <div class="key-points">
+
+          <div class="key-point">
+            <div class="key-point-header">
+              <span class="key-point-num">1.</span>
+              <p class="key-point-title">The further from your eyeline, the more it curves</p>
+            </div>
+            <img src="brow-tilts.png" alt="Same head at different tilts showing guideline curvature" style="max-width: 65%; display: block; margin: 0 auto 1rem; border-radius: 8px;">
+            <p>Your eyeline is the horizontal level of your point of view. Guidelines further above or below it appear to curve more — because you're looking at them at a steeper angle. The further a line is from your eyeline, the more pronounced the curve.</p>
+          </div>
+
+          <div class="key-point">
+            <div class="key-point-header">
+              <span class="key-point-num">2.</span>
+              <p class="key-point-title">The thirds compress the further they are from the eyeline</p>
+            </div>
+            <img src="2.2.png" alt="Head with thirds marked showing compression further from eyeline" style="width: 100%; border-radius: 8px; margin: 0 0 1rem; display: block;">
+            <p>Foreshortening means the spacing between guidelines isn't equal — it compresses. The third furthest from the eyeline appears smaller. Look at the reference and measure carefully rather than assuming equal spacing.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── Step 3: Feature guidelines ── -->
+      <div class="section" id="features">
+        <p class="step-label">03</p>
+        <h2>Draw the horizontal guidelines for each feature</h2>
+
+        <img src="3.png" alt="Feature-level guidelines" style="width: 100%; border-radius: 12px; margin: 1.25rem 0 1.75rem; display: block;">
+
+        <p class="key-points-label">2 key points</p>
+
+        <div class="key-points">
+          <div class="key-point">
+            <div class="key-point-header">
+              <span class="key-point-num">1.</span>
+              <p class="key-point-title">Each feature gets its own guideline — how much it curves depends on how far it is from the eyeline</p>
+            </div>
+            <img src="3.1.png" alt="Head with eyes, nose, and mouth guidelines drawn in" style="width: 100%; border-radius: 8px; margin: 0 0 1rem; display: block;">
+            <p>Eyes, nose, and mouth each get a horizontal guideline curved around the sphere. The further each line sits from your eyeline, the more it curves — same principle as the horizontal guidelines, applied to each feature.</p>
+          </div>
+
+          <div class="key-point">
+            <div class="key-point-header">
+              <span class="key-point-num">2.</span>
+              <p class="key-point-title">Draw the feature along the guideline — not freehand</p>
+            </div>
+            <img src="feat-eyes.png" alt="Eyes drawn along their guideline" style="width: 100%; border-radius: 8px; margin: 0 0 1rem; display: block;">
+            <p>Once the guideline is in place, the feature sits along it. The guideline is your axis — the eye follows the eye line, the mouth follows the mouth line. This is what stops features from drifting out of perspective.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Finished product ── -->
+      <div class="section" id="result">
+        <p class="step-label">result</p>
+        <h2>Now draw.</h2>
+        <p>The guidelines have done all the hard work. Every feature is in the right place, at the right angle, with the right proportions. You're just connecting the dots.</p>
+        <img src="4.png" alt="Finished face construction" style="width: 100%; border-radius: 12px; margin: 1.25rem 0 0; display: block;">
+      </div>
+
+    </div>
+    </div><!-- end page-wrapper -->
+
+    <!-- ── CTA ── -->
+    <section class="cta-section" id="waitlist">
+      <h2>Hey — if this helped, I made a mini course walking through my full face drawing process. Every step.</h2>
+      <p style="font-size: 0.95rem; color: var(--mid); margin-top: -0.5rem; margin-bottom: 1.5rem;">It's not out yet, but I'm launching in a few days. I'll have early bird pricing for people on the waitlist — join and I'll email you when it's live.</p>
+
+      <div style="margin: 0 0 2rem;">
+        <iframe src="https://www.youtube.com/embed/fJEwE0bMt4Y?si=ItxbrLTbiFa2AALM" title="The Face Drawing Breakdown — teaser" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width: 100%; aspect-ratio: 16/9; height: auto; border-radius: 8px;"></iframe>
+      </div>
+
+      <div style="max-width: 26rem; margin: 0 auto;">
+        <p style="font-size: 0.85rem; color: var(--mid); margin-bottom: 0.75rem;"><a href="/" style="color: var(--fg); text-decoration: underline; text-underline-offset: 3px;">See what's inside →</a></p>
+        <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+        <form action="https://app.kit.com/forms/9242110/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9242110" data-uid="a7ae5dab92" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;redirect&quot;,&quot;redirect_url&quot;:&quot;https://joeljys.com/thank-you&quot;}},&quot;version&quot;:&quot;5&quot;}">
+          <div data-style="clean">
+            <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+            <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
+              <div class="formkit-field">
+                <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required type="email" style="color: rgb(0,0,0); border-color: rgb(227,227,227); border-radius: 4px; font-weight: 400;">
+              </div>
+              <button data-element="submit" class="formkit-submit" style="color: #fff; background-color: var(--accent); border-radius: 4px; font-weight: 600;">
+                <div class="formkit-spinner"><div></div><div></div><div></div></div>
+                <span>Save my spot</span>
+              </button>
+            </div>
+          </div>
+        </form>
+        <p class="cta-micro" style="margin-top: 0.6rem;">Just your email. Unsubscribe anytime.</p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>joel.jys</h3>
+        <p class="footer-tagline">teaching you how to draw faces that actually look like people.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/joel.jys/" target="_blank">Instagram</a>
+          <a href="https://www.youtube.com/@joel.jys1" target="_blank">YouTube</a>
+          <a href="https://www.tiktok.com/@joel.jys" target="_blank">TikTok</a>
+        </div>
+      </div>
+      <div>
+        <nav class="footer-nav">
+          <a href="/">Course Waitlist</a>
+        </nav>
+        <p class="footer-copy">© 2026 joel.jys</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

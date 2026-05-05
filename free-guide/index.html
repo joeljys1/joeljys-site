@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no"/>
+  <meta name="theme-color" content="#F9F8F6"/>
+  <title>Free Guide — How to Draw Faces at Any Angle · joel.jys</title>
+  <meta name="description" content="The perspective guideline system that tells you exactly where every feature goes — free."/>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #F9F8F6;
+      --fg: #2D2B28;
+      --fg-soft: #4A4742;
+      --mid: #7A756E;
+      --light: #9B9590;
+      --faint: #DDD8D2;
+      --accent: #F0941D;
+      --accent-hover: #D98318;
+      --white: #FFFFFF;
+      --font: 'DM Sans', Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Nav ── */
+    .nav {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 16px max(1.5rem, 7vw);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 680px;
+    }
+    .brand {
+      color: var(--fg);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Main ── */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem 1.5rem 4rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      border: 1px solid var(--faint);
+      color: var(--mid);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 0.2s forwards;
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 5vw, 2.6rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: var(--fg);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.3s forwards;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--mid);
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.4s forwards;
+    }
+
+    .problem {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--fg);
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.4s forwards;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.45s forwards;
+    }
+    .comparison-card {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--faint);
+      background: var(--white);
+    }
+    .comparison-card img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .comparison-label {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .comparison-label.good { color: #3a7d44; }
+    .comparison-label.bad  { color: #b94040; }
+
+    .teaser {
+      font-size: 0.95rem;
+      color: var(--mid);
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.5s forwards;
+    }
+
+    .what-you-get {
+      list-style: none;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.55s forwards;
+    }
+    .what-you-get li {
+      font-size: 0.95rem;
+      color: var(--fg-soft);
+      display: flex;
+      gap: 0.6rem;
+      align-items: baseline;
+    }
+    .what-you-get li::before {
+      content: "→";
+      color: var(--accent);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .form-wrap {
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.65s forwards;
+    }
+
+    .fine {
+      font-size: 0.78rem;
+      color: var(--light);
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+
+    /* ── Kit overrides ── */
+    .formkit-form[data-uid="f9b8cd8de4"],
+    .formkit-form[data-uid="f9b8cd8de4"][min-width~="400"],
+    .formkit-form[data-uid="f9b8cd8de4"][min-width~="500"],
+    .formkit-form[data-uid="f9b8cd8de4"][min-width~="600"],
+    .formkit-form[data-uid="f9b8cd8de4"][min-width~="700"],
+    .formkit-form[data-uid="f9b8cd8de4"][min-width~="800"] {
+      max-width: 100% !important;
+    }
+    .formkit-form[data-uid="f9b8cd8de4"] [data-style="clean"],
+    .formkit-form[data-uid="f9b8cd8de4"][min-width~="700"] [data-style="clean"],
+    .formkit-form[data-uid="f9b8cd8de4"][min-width~="800"] [data-style="clean"] {
+      padding: 0 !important;
+    }
+    .formkit-form[data-uid="f9b8cd8de4"] .formkit-fields {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+      margin: 0 !important;
+    }
+    .formkit-form[data-uid="f9b8cd8de4"] .formkit-field,
+    .formkit-form[data-uid="f9b8cd8de4"] .formkit-submit {
+      margin: 0 !important;
+      width: 100% !important;
+    }
+    .formkit-form[data-uid="f9b8cd8de4"] .formkit-input {
+      width: 100% !important;
+      padding: 14px 16px !important;
+      border-radius: 10px !important;
+      border: 1.5px solid var(--faint) !important;
+      background: var(--white) !important;
+      font-family: var(--font) !important;
+      font-size: 0.95rem !important;
+      color: var(--fg) !important;
+    }
+    .formkit-form[data-uid="f9b8cd8de4"] .formkit-input:focus {
+      border-color: var(--accent) !important;
+      outline: none !important;
+    }
+    .formkit-form[data-uid="f9b8cd8de4"] .formkit-input::placeholder {
+      color: var(--light) !important;
+      opacity: 1 !important;
+    }
+    .formkit-form[data-uid="f9b8cd8de4"] .formkit-submit {
+      border-radius: 10px !important;
+      background: var(--accent) !important;
+      border: none !important;
+      color: #fff !important;
+      font-family: var(--font) !important;
+      font-weight: 600 !important;
+      font-size: 0.95rem !important;
+      cursor: pointer !important;
+      min-height: 50px !important;
+    }
+    .formkit-form[data-uid="f9b8cd8de4"] .formkit-submit:hover {
+      background: var(--accent-hover) !important;
+    }
+    .formkit-form[data-uid="f9b8cd8de4"] .formkit-submit span {
+      padding: 14px 22px !important;
+      display: block !important;
+    }
+    .formkit-form[data-uid="f9b8cd8de4"] .formkit-powered-by-convertkit-container {
+      display: none !important;
+    }
+    .formkit-form[data-uid="f9b8cd8de4"] .formkit-alert-success {
+      background: var(--bg) !important;
+      border-color: var(--accent) !important;
+      color: var(--fg) !important;
+      border-radius: 10px !important;
+      font-family: var(--font) !important;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="brand">joel.jys</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <span class="badge">free guide</span>
+
+      <h1>How to draw faces at <em>any angle</em></h1>
+
+      <p class="problem">If your face looks off, it probably means your features are placed in the wrong perspective.</p>
+
+      <div class="comparison">
+        <div class="comparison-card">
+          <img src="compare-front.png" alt="Front view — easy">
+          <p class="comparison-label good">front view — easy</p>
+        </div>
+        <div class="comparison-card">
+          <img src="compare-angle.png" alt="Any other angle — hard">
+          <p class="comparison-label bad">any other angle — hard</p>
+        </div>
+      </div>
+
+      <p class="teaser">I'll walk you through the exact fix — step by step.</p>
+
+      <div class="form-wrap">
+        <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
+        <form action="https://app.kit.com/forms/9242226/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="9242226" data-uid="f9b8cd8de4" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Check your email — the guide is on its way. If you don&#39;t see it, check your spam or promotions folder.&quot;}},&quot;version&quot;:&quot;5&quot;}">
+          <div data-style="clean">
+            <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+            <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
+              <div class="formkit-field">
+                <input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="your email" required type="email">
+              </div>
+              <button data-element="submit" class="formkit-submit">
+                <div class="formkit-spinner"><div></div><div></div><div></div></div>
+                <span>Send me the guide</span>
+              </button>
+            </div>
+          </div>
+        </form>
+        <p class="fine">just your email. unsubscribe anytime.</p>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

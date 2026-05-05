@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no"/>
+  <meta name="theme-color" content="#F9F8F6"/>
+  <title>You're in · the face drawing breakdown</title>
+  <meta name="description" content="You're on the waitlist for The Face Drawing Breakdown. Here's what happens next."/>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #F9F8F6;
+      --fg: #2D2B28;
+      --fg-soft: #4A4742;
+      --mid: #7A756E;
+      --light: #9B9590;
+      --faint: #DDD8D2;
+      --accent: #F0941D;
+      --accent-hover: #D98318;
+      --white: #FFFFFF;
+      --font: 'DM Sans', Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes checkPop {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* ── Nav ── */
+    .nav {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 16px max(1.5rem, 7vw);
+      background: var(--bg);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1252px;
+    }
+    .brand {
+      color: var(--fg);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Main ── */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1.5rem;
+      max-width: 36rem;
+      margin: 0 auto;
+    }
+
+    .check {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: checkPop 0.5s ease 0.2s forwards;
+    }
+    .check svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--white);
+      stroke-width: 2.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .main h1 {
+      font-weight: 600;
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      color: var(--fg);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.3s forwards;
+    }
+
+    .main .subtitle {
+      font-size: 1.1rem;
+      color: var(--mid);
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.45s forwards;
+    }
+
+    /* ── What happens next ── */
+    .next-steps {
+      width: 100%;
+      text-align: left;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.6s forwards;
+    }
+    .next-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 1.25rem;
+    }
+    .next-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .next-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--faint);
+    }
+    .next-item:last-child { border-bottom: none; }
+    .next-num {
+      flex-shrink: 0;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      padding-top: 0.1rem;
+    }
+    .next-item p {
+      font-size: 1rem;
+      color: var(--fg-soft);
+      line-height: 1.6;
+    }
+    .next-item p strong {
+      color: var(--fg);
+    }
+
+    /* ── Share nudge ── */
+    .share {
+      width: 100%;
+      margin-top: 2.5rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--white);
+      border: 1px solid var(--faint);
+      border-radius: 12px;
+      text-align: left;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.9s forwards;
+    }
+    .share p {
+      font-size: 0.95rem;
+      color: var(--fg-soft);
+      line-height: 1.6;
+    }
+    .share a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .share a:hover { color: var(--accent-hover); }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--fg);
+      padding: 3rem 1.5rem 2rem;
+      margin-top: auto;
+    }
+    .footer-inner {
+      max-width: 52rem;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+    .footer-brand {
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 0.8rem;
+    }
+    .footer-socials a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+    .footer-socials a:hover { color: var(--white); }
+    @media (max-width: 540px) {
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="brand">joel.jys</a>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <div class="check">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+
+    <h1>thank you.</h1>
+    <p class="subtitle">you're on the list — early bird price locked in.</p>
+
+    <div class="next-steps">
+      <p class="next-label">what happens next</p>
+      <ul class="next-list">
+        <li class="next-item">
+          <span class="next-num">1.</span>
+          <p><strong>Check your email.</strong> You'll get a confirmation from me shortly. If you don't see it, check spam or promotions — and move it to your inbox so you don't miss the launch email.</p>
+        </li>
+        <li class="next-item">
+          <span class="next-num">2.</span>
+          <p><strong>I'll email you when it's ready.</strong> You'll be the first to know when the course launches — with the lowest price anyone will ever get.</p>
+        </li>
+      </ul>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-brand">joel.jys</span>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/joel.jys/" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/@joel.jys1" target="_blank">YouTube</a>
+        <a href="https://www.tiktok.com/@joel.jys" target="_blank">TikTok</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
